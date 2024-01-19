@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toss</title>
+    <style>
+        body {
+        
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #coinContainer {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 2px solid #333;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .coin {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background-color: #ffd700; /* Coin color: gold */
+            border-radius: 50%;
+        }
+
+        .resultText {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #flipButton {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    Click on Flip the Coin to toss
+    <div id="coinContainer">
+        <div class="coin"></div>
+        <div class="resultText" id="resultText"></div>
+    </div>
+    <button id="flipButton" onclick="flipCoin()">Flip the Coin</button>
+
+    <script>
+        function flipCoin() {
+            const coinContainer = document.getElementById('coinContainer');
+            const resultText = document.getElementById('resultText');
+
+            coinContainer.classList.add('flipping');
+            resultText.textContent = '';
+
+            setTimeout(() => {
+                const randomNumber = Math.random();
+                const result = randomNumber < 0.5 ? 'Heads' : 'Tails';
+
+                resultText.textContent = result;
+                coinContainer.classList.remove('flipping');
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
