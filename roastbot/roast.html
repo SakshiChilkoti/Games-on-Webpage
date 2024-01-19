@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Roasty Boy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoastBot</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #chatbox {
+            width: 300px;
+            height: 400px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        #inputBox {
+            width: 300px;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    Roasty Boy
+    <div id="chatbox"></div>
+    <input type="text" id="inputBox" placeholder="Type something...">
+    <button onclick="sendMessage()">Dare to </button>
+
+    <script>
+        const chatbox = document.getElementById('chatbox');
+        const inputBox = document.getElementById('inputBox');
+
+        function sendMessage() {
+            const message = inputBox.value.trim();
+            if (message !== '') {
+                displayMessage(`You: ${message}`);
+                roastUser();
+                inputBox.value = '';
+            }
+        }
+
+        function displayMessage(message) {
+            const newMessage = document.createElement('p');
+            newMessage.textContent = message;
+            chatbox.appendChild(newMessage);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        function roastUser() {
+            const roasts = [
+                "You're so slow, snails outrun you.",
+                "If laughter is the best medicine, your face must be curing the world.",
+                "You're not stupid; you just have bad luck thinking.",
+                "I would agree with you, but then we'd both be wrong.",
+                "Is your name Wi-fi? Because I'm feeling a connection failure.",
+                "Even Bob the Builder can't fix your life.",
+                "You act like how I would think vomit would act if it could.",
+                "I thought of you today, and it reminded me to take out the trash.",
+                "Are you done with all of this drama? Because I need an intermission.",
+                "Most mistakes can be fixed; you are the exception that proves the rule.",
+                "Everyone can act foolish once, but you are violating that privilege. ",
+                "You are like a software update. Whenever I see you, I immediately think, not now.",
+                "It is hilarious how you are trying to fit your entire vocabulary into one sentence.",
+                "If ignorance is bliss, you must be the happiest person on the planet.",
+                "You're talking to me; I thought you only talked behind my back.",
+                "I've seen you before, but I'm sure I had to pay for admission last time.", 
+                "If you’re going to be two-faced, at least make one of them pretty. ",
+                "You must have been born on a highway because that's where most accidents happen. ",
+                "Don't feel bad. A lot of people have no talent. ",
+                "You should carry a plant around to replace the oxygen you waste. ",
+                "I would punch you, but I don’t want to improve the appearance of your face.", 
+                "You are proof God has a sense of humour.",
+                "I think I found your purpose in life. It is to be an organ donor. You have an entire life to be an idiot. Why not take today off?"
+             
+            ];
+
+            const randomRoast = roasts[Math.floor(Math.random() * roasts.length)];
+            displayMessage(`RoastBot: ${randomRoast}`);
+        }
+    </script>
+</body>
+</html>
